@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --color-maajabu-black: #050505;
+  --color-maajabu-white: #fafafa;
+  --color-maajabu-gray: #a3a3a3;
+}
+
+:root {
+  color-scheme: light;
+  --maajabu-ink: #080808;
+  --maajabu-paper: #f7f7f7;
+  --maajabu-muted: #a3a3a3;
+  --maajabu-line: #dedede;
+  --maja-night: #050505;
+  --maja-gold: #ffffff;
+  --maja-cream: #f7f7f7;
+}
+
+html { scroll-behavior: smooth; background: #f7f7f7; }
+body {
+  background: #f7f7f7;
+  color: #111111;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+::selection { background: #111111; color: #ffffff; }
+a, button { -webkit-tap-highlight-color: transparent; }
+button, a { touch-action: manipulation; }
+
+/* Lenis structural integration */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-scrolling iframe { pointer-events: none; }
+
+@media (max-width: 767px) {
+  body { padding-bottom: calc(4rem + env(safe-area-inset-bottom)); }
+}
+
+/* Monochrome editorial system */
+.maja-hero { isolation: isolate; background: #050505; }
+.maja-script { font-style: italic; font-weight: 400; letter-spacing: -.045em; }
+.maja-gold-button {
+  background: linear-gradient(135deg, #ffffff 0%, #d8d8d8 50%, #ffffff 100%);
+  color: #050505;
+  box-shadow: 0 8px 30px rgba(255,255,255,.10), inset 0 1px 0 rgba(255,255,255,.9);
+}
+.maja-gold-button:hover { box-shadow: 0 12px 36px rgba(255,255,255,.2), inset 0 1px 0 #fff; }
+.maja-orbit { pointer-events: none; box-shadow: 0 0 80px rgba(255,255,255,.035), inset 0 0 70px rgba(255,255,255,.025); }
+.maja-orbit--two { border-style: dashed; animation: maja-orbit 60s linear infinite; }
+.maja-look-card { transform: translateZ(0); box-shadow: 0 18px 45px rgba(0,0,0,.18); }
+.maja-look-card img { backface-visibility: hidden; }
+@keyframes maja-orbit { to { transform: rotate(360deg); } }
+
+/* Make legacy accent colors monochrome across the complete app. */
+.text-amber-500, .text-amber-600, .text-amber-400,
+.text-yellow-500, .text-yellow-400, .text-rose-500,
+.text-pink-500 { color: #333333 !important; }
+.bg-amber-400, .bg-amber-500, .bg-yellow-400, .bg-yellow-500,
+.bg-rose-500, .bg-pink-500 { background-color: #111111 !important; }
+.border-amber-400, .border-amber-500, .border-yellow-400,
+.border-rose-500, .border-pink-500 { border-color: #777777 !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .maja-orbit--two { animation: none; }
+  .maja-look-card img { transition: none; }
+}
